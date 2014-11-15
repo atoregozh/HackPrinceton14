@@ -503,7 +503,7 @@ if (typeof jQuery === 'undefined') {
     if (!$target.hasClass('carousel')) return
     var options = $.extend({}, $target.data(), $this.data())
     var slideIndex = $this.attr('data-slide-to')
-    if (slideIndex) options.interval = false
+    if (slideIndex) options.interval = true
 
     Plugin.call($target, options)
 
