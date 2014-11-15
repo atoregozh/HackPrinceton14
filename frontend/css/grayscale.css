@@ -61,6 +61,9 @@ a:focus {
     font-weight: 400;
 }
 
+#logo img {
+  height:50px;
+}
 
 .navbar-custom {
     margin-bottom: 0;
@@ -70,7 +73,7 @@ a:focus {
     background-color: #fff;
 }
 
-.navbar-custom .navbar-brand {
+.navbar-custom .navbar-brand{
     font-weight: 700;
 }
 
