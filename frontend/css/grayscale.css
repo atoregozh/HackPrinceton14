@@ -95,8 +95,8 @@ a:focus {
 }
 
 .navbar-custom .nav li.active {
-    outline: nonte;
-    background-color: rgba(255,255,255,.3);
+    outline: none;
+    background-color: rgba(33,154,179,.8);
 }
 
 .navbar-custom .nav li a {
@@ -109,7 +109,7 @@ a:focus {
 .navbar-custom .nav li a:focus,
 .navbar-custom .nav li a.active {
     outline: 0;
-    background-color: rgba(255,255,255,.3);
+    background-color: rgba(33,154,179,.8);
 }
 
 @media(min-width:767px) {
@@ -129,7 +129,7 @@ a:focus {
     }
 
     .navbar-custom.top-nav-collapse {
-        border-bottom: 1px solid rgba(255,255,255,.3);
+        /*border-bottom: 1px solid rgba(255,255,255,.3);*/
     }
 }
 
@@ -254,11 +254,11 @@ a:focus {
     padding-top: 100px;
 }
 
-.download-section {
+.form-section {
     width: 100%;
     padding: 50px 0;
     color: #fff;
-    background: url(../img/downloads-bg.jpg) no-repeat center center scroll;
+    /*background: url(../img/downloads-bg.jpg) no-repeat center center scroll;*/
     background-color: #000;
     -webkit-background-size: cover;
     -moz-background-size: cover;
@@ -278,7 +278,7 @@ a:focus {
     }
 
     .download-section {
-        padding: 100px 0;
+        padding: 50px 0;
     }
 
     #map {
@@ -333,11 +333,19 @@ ul.banner-social-buttons {
 }
 
 footer {
+    clear:both;
     padding: 50px 0;
 }
 
 footer p {
     margin: 0;
+}
+
+footer.logged-in {
+    position:absolute;
+    bottom:10px;
+    padding:0;
+    margin:0;
 }
 
 ::-moz-selection {
@@ -375,3 +383,57 @@ form input {
 form input {
   margin-right:10px;
 }
+
+#loggedin {
+  margin-top:70px;
+}
+
+#loggedin-container {
+  width:80%;
+  margin:auto;
+}
+
+#city {
+  width:20%;
+  float:left;
+}
+
+#forecast {
+  width:80%;
+  float:right;
+}
+
+#forecast h3 {
+  clear:right;
+  text-align:center;
+}
+
+#forecast ul {
+  list-style-type:none;
+
+}
+
+#forecast ul li{
+  padding:40px;
+  margin:15px;
+  border: 2px solid white;
+  width:110px;
+  height:110px;
+  display:block;
+  float:right;
+}
+
+#forecast li.today {
+  margin-top:-25px;
+  width:150px;
+  height:150px;
+  border: 4px solid white;
+}
+
+#welcome h2{
+  text-align:right;
+  padding-bottom:100px;
+}
+ span.special {
+   color: #219ab3;
+ }

@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Our App</title>
+    <title>WTHR</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -41,9 +41,7 @@
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-main-collapse">
                     <i class="fa fa-bars"></i>
                 </button>
-                <a class="navbar-brand page-scroll" href="#page-top">
-                    Our App
-                </a>
+                <a class="navbar-brand page-scroll" href="#page-top">WTHR</a>
             </div>
 
             <!-- Collect the nav links, forms, and other content for toggling -->
@@ -82,24 +80,24 @@
                             </ol>
 
                             <!-- Wrapper for slides -->
-                            <div class="carousel-inner">
+                              <div class="carousel-inner">
                                 <div class="item active">
                                     <div class="fill" style="background-image:url('http://placehold.it/1900x1080&text=Slide One');"></div>
-                                    <div class="carousel-caption">
+                                    <!--<div class="carousel-caption">
                                         <h2>Caption 1</h2>
-                                    </div>
+                                    </div>-->
                                 </div>
                                 <div class="item">
                                     <div class="fill" style="background-image:url('http://placehold.it/1900x1080&text=Slide Two');"></div>
-                                    <div class="carousel-caption">
+                                    <!--<div class="carousel-caption">
                                         <h2>Caption 2</h2>
-                                    </div>
+                                    </div>-->
                                 </div>
                                 <div class="item">
                                     <div class="fill" style="background-image:url('http://placehold.it/1900x1080&text=Slide Three');"></div>
-                                    <div class="carousel-caption">
+                                    <!--<div class="carousel-caption">
                                         <h2>Caption 3</h2>
-                                    </div>
+                                    </div>-->
                                 </div>
                             </div>
 
@@ -120,28 +118,30 @@
     <section id="about" class="container content-section text-center">
         <div class="row">
             <div class="col-lg-8 col-lg-offset-2">
-                <h2>About Grayscale</h2>
-                <p>Grayscale is a free Bootstrap 3 theme created by Start Bootstrap. It can be yours right now, simply download the template on <a href="http://startbootstrap.com/template-overviews/grayscale/">the preview page</a>. The theme is open source, and you can use it for any purpose, personal or commercial.</p>
-                <p>This theme features stock photos by <a href="http://gratisography.com/">Gratisography</a> along with a custom Google Maps skin courtesy of <a href="http://snazzymaps.com/">Snazzy Maps</a>.</p>
-                <p>Grayscale includes full HTML, CSS, and custom JavaScript files along with LESS files for easy customization.</p>
+                <h2>About Our App</h2>
+                <p>Type some general stuff about the app here</p>
+                <p>&nbsp; </p>
+                <p>&nbsp; </p>
             </div>
         </div>
     </section>
 
     <!-- Register Section -->
     <section id="register" class="content-section text-center">
-        <div class="download-section">
+        <div class="form-section">
             <div class="container">
                     <h2>Register your device</h2>
-                      <form id="registration">
+                      <form id="register-form">
                       <p><label>Name: </label>
                       <input type="text" name="name"></input></p>
                       <p><label>Phone: </label>
                       <input type="text" name="phone"></input></p>
+                      <p><label>Zip Code: </label>
+                      <input type="text" name="zip"></input></p>
                       <p><label>Gender: </label>
                       <input type="radio" name="gender" value="male" style ="margin-right:5px;" >Male &nbsp;</input>
                       <input type="radio" name="gender" value="female" style ="margin-right:5px;">Female</input></p>
-                      <p><input type="submit" value="Submit"></input></p>
+                      <p><input type="submit" value="Submit" class="btn btn-default btn-lg"></input></p>
                     </form>
                 </div>
             </div>
@@ -149,12 +149,16 @@
     </section>
     <!-- Login Section -->
     <section id="login" class="content-section text-center">
-        <div class="download-section">
+        <div class="form-section">
             <div class="container">
-                <div class="col-lg-8 col-lg-offset-2">
-                    <h2>Download Grayscale</h2>
-                    <p>You can download Grayscale for free on the preview page at Start Bootstrap.</p>
-                    <a href="http://startbootstrap.com/template-overviews/grayscale/" class="btn btn-default btn-lg">Visit Download Page</a>
+                    <h2>Login to your account</h2>
+                      <form id="login-form">
+                      <p><label>Username: </label>
+                      <input type="text" name="username"></input></p>
+                      <p><label>Password: </label>
+                      <input type="text" name="password"></input></p>
+                      <p><input type="submit" value="Submit" class="btn btn-default btn-lg"></input></p>
+                    </form>
                 </div>
             </div>
         </div>
@@ -164,32 +168,29 @@
     <section id="contact" class="container content-section text-center">
         <div class="row">
             <div class="col-lg-8 col-lg-offset-2">
-                <h2>Contact Start Bootstrap</h2>
-                <p>Feel free to email us to provide some feedback on our templates, give us suggestions for new templates and themes, or to just say hello!</p>
-                <p><a href="mailto:feedback@startbootstrap.com">feedback@startbootstrap.com</a>
+                <h2>Contact Us</h2>
+                <p>Feel free to email us to provide some feedback on our app, give us suggestions for new features, or to just say hello!</p>
+                <p><a href="mailto:cdaniels@cs.fsu.edu" class="btn btn-default btn-lg">Send Email</a>
                 </p>
                 <ul class="list-inline banner-social-buttons">
                     <li>
-                        <a href="https://twitter.com/SBootstrap" class="btn btn-default btn-lg"><i class="fa fa-twitter fa-fw"></i> <span class="network-name">Twitter</span></a>
+                        <a href="https://twitter.com/kairoschris" class="btn btn-default btn-lg"><i class="fa fa-twitter fa-fw"></i> <span class="network-name">Twitter</span></a>
                     </li>
                     <li>
-                        <a href="https://github.com/IronSummitMedia/startbootstrap" class="btn btn-default btn-lg"><i class="fa fa-github fa-fw"></i> <span class="network-name">Github</span></a>
+                        <a href="https://github.com/kairoschris" class="btn btn-default btn-lg"><i class="fa fa-github fa-fw"></i> <span class="network-name">Github</span></a>
                     </li>
                     <li>
-                        <a href="https://plus.google.com/+Startbootstrap/posts" class="btn btn-default btn-lg"><i class="fa fa-google-plus fa-fw"></i> <span class="network-name">Google+</span></a>
+                        <a href="https://plus.google.com/u/1/114561587205901700650/" class="btn btn-default btn-lg"><i class="fa fa-google-plus fa-fw"></i> <span class="network-name">Google+</span></a>
                     </li>
                 </ul>
             </div>
         </div>
     </section>
 
-    <!-- Map Section -->
-    <div id="map"></div>
-
     <!-- Footer -->
     <footer>
         <div class="container text-center">
-            <p>Copyright &copy; Your Website 2014</p>
+            <p>Copyright &copy; WTHR 2014</p>
         </div>
     </footer>
 
