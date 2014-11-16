@@ -69,15 +69,11 @@
           <div id="forecast">
             <ul>
             {% for w in weathers %}
-            <li class="{{w['class']}}"><img src="../static/img/weath-icon/{{w['filename']}}.jpg" /></li>
+            <li class="{{w['class']}}"><img src="../static/img/weath-icon/{{w['filename']}}.jpg" /><p class="weather-text">{{w['text']}}<sup>0</sup>C</p></li>
             {% endfor %}
-              <!-- <li><img src="../static/img/smiley.jpg" /></li>
-              <li><img src="../static/img/smiley.jpg" /></li>
-              <li class="today"><img src="../static/img/smiley.jpg" /></li>
-              <li><img src="../static/img/smiley.jpg" /></li>
-              <li><img src="../static/img/smiley.jpg" /></li> -->
+
             </ul>
-            <h3>Your Forecast</h3>
+<!--             <h3>Your Forecast</h3> -->
           </div>
         </div>
     </section>

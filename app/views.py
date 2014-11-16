@@ -37,11 +37,12 @@ def login():
 	w = []
 	for weather in weathers_res:
 		wd = weather.timestamp.date()
+		text =  ("%s %s" % (weather.timestamp.strftime('%a'), weather.temperature))
 		if (wd >= two_min) & (wd <= two_plus):
 			if (wd == now):
-				w.append({'class':'today', 'filename': weather.image_id})
+				w.append({'class':'today', 'filename': weather.image_id, 'text':text})
 			else:
-				w.append({'class':'not-today','filename': weather.image_id})
+				w.append({'class':'not-today','filename': weather.image_id, 'text':text})
 
 	
 	#retrieve user data from database
