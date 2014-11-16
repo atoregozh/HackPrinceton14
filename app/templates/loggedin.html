@@ -67,11 +67,24 @@
           <div id="welcome"><h2 class=>Welcome <span class="special">{{session['username']}}</span></h2></div>
           <div id="city"><h2 class="special">{{session['city']}}</h2><h2><img src="../static/img/clouds.png" /></h2></div>
           <div id="forecast">
+<<<<<<< HEAD
             <div class="image1"><img src="../static/img/smiley.jpg" /><p>Some Text</p></div>
             <div class="image2"><img src="../static/img/smiley.jpg" /><p>Some Text</p></div>
             <div class="today"><img src="../static/img/smiley.jpg" /><p>Some Text</p></div>
             <div class="image4"><img src="../static/img/smiley.jpg" /><p>Some Text</p></div>
             <div class="image5"><img src="../static/img/smiley.jpg" /><p>Some Text</p></div>
+=======
+            <ul>
+            {% for w in weathers %}
+            <li class="{{w['class']}}"><img src="../static/img/{{w['filename']}}.jpg" /></li>
+            {% endfor %}
+              <!-- <li><img src="../static/img/smiley.jpg" /></li>
+              <li><img src="../static/img/smiley.jpg" /></li>
+              <li class="today"><img src="../static/img/smiley.jpg" /></li>
+              <li><img src="../static/img/smiley.jpg" /></li>
+              <li><img src="../static/img/smiley.jpg" /></li> -->
+            </ul>
+>>>>>>> c434636fa330f5ad4c3c6206a9446bc6bab68c08
             <h3>Your Forecast</h3>
           </div>
         </div>
