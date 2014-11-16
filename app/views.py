@@ -1,11 +1,24 @@
 from flask import render_template, flash, redirect, session, url_for, request, g
 from flask.ext.login import login_user, logout_user, current_user, login_required
 from app import app
-from db_model import City, User, db, Weather,Image
+from db_model import City, User, db, Weather
 from sqlalchemy import and_
 import datetime
-# from forms import LoginForm
-# from models import User
+from twilio.rest import TwilioRestClient
+# private settings
+import keys
+
+img_weather = {'01d': "http://media-cache-ec0.pinimg.com/236x/3e/21/89/3e2189ba8571cf72e0e08ffa2ae5523f.jpg",
+				'01n': "http://media-cache-ec0.pinimg.com/236x/3e/21/89/3e2189ba8571cf72e0e08ffa2ae5523f.jpg",
+				'02d': "http://media-cache-ec0.pinimg.com/236x/3e/21/89/3e2189ba8571cf72e0e08ffa2ae5523f.jpg",
+				'02n': "http://media-cache-ec0.pinimg.com/236x/3e/21/89/3e2189ba8571cf72e0e08ffa2ae5523f.jpg",
+				'03d' : "http://www.jokeoverflow.com/wp-content/uploads/2012/12/21795_546818308665550_720643909_n.jpg",
+				'03n' : "http://www.jokeoverflow.com/wp-content/uploads/2012/12/21795_546818308665550_720643909_n.jpg",
+				'04d' : "http://www.jokeoverflow.com/wp-content/uploads/2012/12/21795_546818308665550_720643909_n.jpg",
+				'04n' : "http://www.jokeoverflow.com/wp-content/uploads/2012/12/21795_546818308665550_720643909_n.jpg",
+				'09d' : "http://www.jokeoverflow.com/wp-content/uploads/2012/12/21795_546818308665550_720643909_n.jpg",
+				'09n' : "http://www.jokeoverflow.com/wp-content/uploads/2012/12/21795_546818308665550_720643909_n.jpg"}
+
 
 @app.route('/')
 @app.route('/index')
@@ -24,6 +37,11 @@ def login():
 		return render_template("index.html")
 	user_id = user.id
 
+	# xxxxxxxxx
+	if username == "kesiena":
+		send_mms()
+	# xxxxxxxxx
+
 	#set user ID in session
 	session['user_id'] = user_id
 
@@ -40,6 +58,7 @@ def login():
 		text =  ("%s %s" % (weather.timestamp.strftime('%a'), weather.temperature))
 		if (wd >= two_min) & (wd <= two_plus):
 			if (wd == now):
+				session['bigImgUrl'] = img_weather[weather.image_id]
 				w.append({'class':'today', 'filename': weather.image_id, 'text':text})
 			else:
 				w.append({'class':'not-today','filename': weather.image_id, 'text':text})
@@ -55,5 +74,18 @@ def login():
 def logout():
 	return render_template("index.html",
                            title='Wthr')
+
+# @app.route('/send_mms', methods=['POST'])
+def send_mms():
+    account_sid = keys.twilio_id
+    auth_token  = keys.twilio_token
+    client = TwilioRestClient(account_sid, auth_token)
+    message = client.messages.create(body="Today is fucking snowing!", 
+           to="+15108497098",
+           from_="+15104471209",
+           media_url="http://i.qkme.me/3tf0y8.jpg")
+
+
+
 
 

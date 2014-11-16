@@ -1,4 +1,4 @@
-from db_model import City, User, db, Weather,Image
+from db_model import City, User, db, Weather
 import datetime
 
 
@@ -61,6 +61,17 @@ db.session.add(w10)
 db.session.commit()
 weathers = Weather.query.all()
 print weathers
+
+# img1 = Image("01d", "http://media-cache-ec0.pinimg.com/236x/3e/21/89/3e2189ba8571cf72e0e08ffa2ae5523f.jpg")
+# img2 = Image("02d", "http://media-cache-ec0.pinimg.com/236x/3e/21/89/3e2189ba8571cf72e0e08ffa2ae5523f.jpg")
+# img3 = Image("01n", "http://media-cache-ec0.pinimg.com/236x/3e/21/89/3e2189ba8571cf72e0e08ffa2ae5523f.jpg")
+
+# db.session.add(img1)
+# db.session.add(img2)
+# db.session.add(img3)
+# db.session.commit()
+# imgs = Image.query.all()
+# print imgs
 
 # pic = Image()
 

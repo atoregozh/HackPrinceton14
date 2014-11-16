@@ -51,9 +51,7 @@ class Weather(db.Model):
     cat_desc = db.Column(db.String(140))
     temperature = db.Column(db.Float)
     timestamp = db.Column(db.DateTime)
-    image_id = db.Column(db.String(5), db.ForeignKey('image.id'))
-    
-    
+    image_id = db.Column(db.String(5))   
 
     def __init__(self, city, category, cat_desc, temperature, timestamp, image_id):
 	    self.city = city
@@ -66,15 +64,17 @@ class Weather(db.Model):
     def __repr__(self):
         return '<Weather %r>' % (self.cat_desc)
 
-class Image(db.Model):
-    id = db.Column(db.String(5), primary_key = True)
-    picture = db.Column(db.LargeBinary)
-    weather = db.relationship('Weather', backref = 'image', lazy='dynamic')
+# class Image(db.Model):
+#     id = db.Column(db.Integer(), primary_key = True)
+#     img_id = db.Column(db.String(5), unique=True)
+#     weather = db.relationship('Weather', backref = 'image', lazy='dynamic')
+#     url = db.Column(db.String(140))
 
-    def __init__(self,picture):
-	    self.picture = picture
+#     def __init__(self,img_id,url):
+#         self.img_id = img_id
+# 	    self.url = url
 
-    def __repr__(self):
-	    return '<Image %r>' % (self.id)
+#     def __repr__(self):
+# 	    return '<Image %r>' % (self.id)
 
 
