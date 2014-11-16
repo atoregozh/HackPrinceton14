@@ -5,7 +5,7 @@ app.config.from_object('config')
 app.secret_key=app.config['SECRET_KEY']
 
 
-from app import views, models
+from app import views
 
 #login system
 # import os
