@@ -1,4 +1,3 @@
-HackPrinceton14
-===============
+### Wthr
 
 web app for HackPrinceton
