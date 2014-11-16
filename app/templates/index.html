@@ -133,8 +133,12 @@
             <form id="register-form">
               <p><label>Name: </label>
               <input type="text" name="name"></input></p>
-              <p><label>Phone: </label>
-              <input type="text" name="phone"></input></p>
+              <p>
+              	<label>Phone: 
+              	</label>
+                <input type="text" name="phone">
+                </input>
+             </p>
               <p><label>City: </label>
               <input type="text" name="zip"></input></p>
               <p><label>Gender: </label>
@@ -149,11 +153,11 @@
         <div class="form-section">
             <div class="container">
                     <h2>Login to your account</h2>
-                      <form id="login-form">
+                      <form id="login-form" action="/login" method="POST">
                       <p><label>Username: </label>
-                      <input type="text" name="username"></input></p>
+                      <input type="text" name="username" placeholder="username"></input></p>
                       <p><label>Password: </label>
-                      <input type="password" name="password"></input></p>
+                      <input type="password" name="password" placeholder="xxxxxxxxxx"></input></p>
                       <p><input type="submit" value="Submit" class="btn btn-default btn-lg"></input></p>
                     </form>
                 </div>

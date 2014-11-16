@@ -1,8 +1,8 @@
 from flask import render_template, flash, redirect, session, url_for, request, g
 from flask.ext.login import login_user, logout_user, current_user, login_required
-from app import app, db, oid
-from forms import LoginForm
-from models import User
+from app import app
+# from forms import LoginForm
+# from models import User
 
 @app.route('/')
 @app.route('/index')
@@ -22,6 +22,12 @@ def index():
                            title='Home',
                            user=user,
                            posts=posts)
+
+@app.route('/login', methods=['POST'])
+def login():
+	
+	return render_template("loggedin.html")
+
 
 # @app.route('/login', methods=['GET', 'POST'])
 # @oid.loginhandler
