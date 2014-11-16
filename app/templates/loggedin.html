@@ -68,11 +68,14 @@
           <div id="city"><h2 class="special">{{session['city']}}</h2><h2><img src="../static/img/clouds.png" /></h2></div>
           <div id="forecast">
             <ul>
-              <li><img src="../static/img/smiley.jpg" /></li>
+            {% for w in weathers %}
+            <li class="{{w['class']}}"><img src="../static/img/{{w['filename']}}.jpg" /></li>
+            {% endfor %}
+              <!-- <li><img src="../static/img/smiley.jpg" /></li>
               <li><img src="../static/img/smiley.jpg" /></li>
               <li class="today"><img src="../static/img/smiley.jpg" /></li>
               <li><img src="../static/img/smiley.jpg" /></li>
-              <li><img src="../static/img/smiley.jpg" /></li>
+              <li><img src="../static/img/smiley.jpg" /></li> -->
             </ul>
             <h3>Your Forecast</h3>
           </div>

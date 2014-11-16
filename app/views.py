@@ -30,38 +30,36 @@ def index():
 def login():
 	username = request.form['username']
 	password = request.form['password']
-	#authenticate user
-	user_id = 1
+	
+	#authenticated user
+	user = User.query.filter_by(username=username).first()
+	if user == None:
+		return render_template("index.html")
+	user_id = user.id
 
 	#set user ID in session
 	session['user_id'] = user_id
 
-	user = User.query.filter_by(id=user_id).first()
 	city = City.query.filter_by(name=user.city).first()
 	now = datetime.datetime.utcnow().date()
 	two_min = now - datetime.timedelta(days=2)
 	two_plus = now + datetime.timedelta(days=2)
 
-	weathers = Weather.query.filter_by(city=city.name).all()
-	
+	#query all weathers for the city and then subset
+	weathers_res = Weather.query.filter_by(city=city.name).all()
 	w = []
-	for weather in weathers:
+	for weather in weathers_res:
 		if (weather.timestamp.date() >= two_min) & (weather.timestamp.date() <= two_plus):
-			w.append(weather)
+			w.append({'class':'xyz', 'filename': weather.image_id})
 	print w
-
-
-	print user.username
-	print user.city
-	print city
 
 	
 	#retrieve user data from database
 	session['username'] = username
-	session['city'] = 'Boston,US'
+	session['city'] = city.name
 	# session['weathers'] = w
 
-	return render_template("loggedin.html")
+	return render_template("loggedin.html", weathers = w)
 
 
 # @app.route('/login', methods=['GET', 'POST'])
