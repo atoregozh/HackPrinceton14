@@ -14,17 +14,15 @@ db = SQLAlchemy(app)
 
 class User(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    username = db.Column(db.String(80))
+    username = db.Column(db.String(80), unique=True, index=True)
     password = db.Column(db.String(15))
-    sex = db.Column(db.String(1))
     phone_num = db.Column(db.String(12))
     city = db.Column(db.String(40), db.ForeignKey('city.name'))
 
 
-    def __init__(self, username, password, sex, phone_num, city):
+    def __init__(self, username, password, phone_num, city):
 	    self.username = username
 	    self.password = password
-	    self.sex = sex
 	    self.phone_num = phone_num
 	    self.city = city
 

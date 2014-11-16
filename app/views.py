@@ -7,6 +7,7 @@ import datetime
 from twilio.rest import TwilioRestClient
 # private settings
 import keys
+import sys
 
 img_weather = {'01d': "http://media-cache-ec0.pinimg.com/236x/3e/21/89/3e2189ba8571cf72e0e08ffa2ae5523f.jpg",
 				'01n': "http://media-cache-ec0.pinimg.com/236x/3e/21/89/3e2189ba8571cf72e0e08ffa2ae5523f.jpg",
@@ -33,7 +34,7 @@ def login():
 	
 	#authenticated user
 	user = User.query.filter_by(username=username).first()
-	if user == None:
+	if user is None:
 		return render_template("index.html")
 	user_id = user.id
 
@@ -69,6 +70,59 @@ def login():
 	session['city'] = city.name
 	# session['weathers'] = w=
 	return render_template("loggedin.html", weathers = w)
+
+@app.route('/register', methods=['POST'])
+def register():
+	username = request.form['username']
+	password = request.form['password']
+	city = request.form['city']
+	phone = request.form['phone']
+
+	#city exists
+	db_city = City.query.filter_by(name=city).first()
+	#if city dne, then create in db
+	if db_city is None:
+		put_city(city)
+		db_city = City.query.filter_by(name=city).first()
+
+	u1 = User(username, password, phone,city)
+	db.session.add(u1)
+	db.session.commit()
+	db_user = User.query.filter_by(username=username).first()
+
+	session['user_id'] = db_user.id
+	session['username'] = username
+	session['city'] = db_city.name
+
+	now = datetime.datetime.utcnow().date()
+	two_min = now - datetime.timedelta(days=2)
+	two_plus = now + datetime.timedelta(days=2)
+	#query all weathers for the city and then subset
+	weathers_res = Weather.query.filter_by(city=db_city.name).order_by(Weather.timestamp.desc()).all()
+	w = []
+	for weather in weathers_res:
+		wd = weather.timestamp.date()
+		text =  ("%s %s" % (weather.timestamp.strftime('%a'), weather.temperature))
+		if (wd >= two_min) & (wd <= two_plus):
+			if (wd == now):
+				session['bigImgUrl'] = img_weather[weather.image_id]
+				w.append({'class':'today', 'filename': weather.image_id, 'text':text})
+			else:
+				w.append({'class':'not-today','filename': weather.image_id, 'text':text})
+
+	return render_template("loggedin.html", weathers = w)
+
+def put_city(city_name):
+	city_obj = City(city_name)
+	db.session.add(city_obj)
+	d = datetime.datetime.utcnow() - datetime.timedelta(days=2)
+	while d <= datetime.datetime.utcnow() + datetime.timedelta(days=2):
+		w = Weather(city_name, 'clear', 'sky is clear', 3.86, d,'01d')
+		db.session.add(w)
+		d = d + datetime.timedelta(days=1)
+	db.session.commit()
+		
+	#@TODO:fetchWeather
 
 @app.route('/logout')
 def logout():

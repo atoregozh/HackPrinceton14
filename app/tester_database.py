@@ -8,10 +8,10 @@ princeton = City('Princeton,US')
 chapel_hill = City('Chapel Hill,US')
 florida = City('Florida,US')
 
-u1 = User('atoregozh', 'aizhan12345','F','+15108497098','Los Angeles,US')
-u2 = User('kesiena', 'kes123456','M','+15108497098','Chapel Hill,US')
-u3 = User('kayla', 'kayla123456','M','+15108497098','Boston,US')
-u4 = User('christie', 'cris123456','M','+15108497098','Florida,US')
+u1 = User('atoregozh', 'aizhan12345','+15108497098','Los Angeles,US')
+u2 = User('kesiena', 'kes123456','+15108497098','Chapel Hill,US')
+u3 = User('kayla', 'kayla123456','+15108497098','Boston,US')
+u4 = User('christie', 'cris123456','+15108497098','Florida,US')
 
 
 db.session.add(u1)

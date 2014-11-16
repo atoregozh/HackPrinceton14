@@ -130,20 +130,23 @@
     <section id="register" class="content-section text-center">
         <div class="form-section">
             <h2>Register your device</h2>
-            <form id="register-form">
-              <p><label>Name: </label>
-              <input type="text" name="name"></input></p>
+            <form id="register-form" action="/register" method="POST">
+              <p><label>Username: </label>
+              <input type="text" name="username" placeholder="username"></input></p>
               <p>
-              	<label>Phone: 
-              	</label>
-                <input type="text" name="phone">
+              	<label>Phone: </label>
+                <input type="text" name="phone" placeholder="+1 (xxx)-xxx-xxxx">
                 </input>
              </p>
+             <p>
+             	<label>Password: </label>
+             	<input type="password" name="password" placeholder="password"></input>
+             </p>
               <p><label>City: </label>
-              <input type="text" name="zip"></input></p>
-              <p><label>Gender: </label>
+              <input type="text" name="city" placeholder="City, Country"></input></p>
+<!--               <p><label>Gender: </label>
               <input type="radio" name="gender" value="male" style ="margin-right:5px;" >Male &nbsp;</input>
-              <input type="radio" name="gender" value="female" style ="margin-right:5px;">Female</input></p>
+              <input type="radio" name="gender" value="female" style ="margin-right:5px;">Female</input></p> -->
               <p><input type="submit" value="Submit" class="btn btn-default btn-lg"></input></p>
             </form>
         </div>
