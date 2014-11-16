@@ -3,7 +3,7 @@ from flask.ext.login import login_user, logout_user, current_user, login_require
 from app import app
 from db_model import City, User, db, Weather
 from sqlalchemy import and_
-import datetime
+import datetime, urllib2, json
 from twilio.rest import TwilioRestClient
 # private settings
 import keys
@@ -60,9 +60,9 @@ def login():
 		if (wd >= two_min) & (wd <= two_plus):
 			if (wd == now):
 				session['bigImgUrl'] = img_weather[weather.image_id]
-				w.append({'class':'today', 'filename': weather.image_id, 'text':text})
+				w.append({'class':'today-forecast-div', 'filename': weather.image_id, 'text':text})
 			else:
-				w.append({'class':'not-today','filename': weather.image_id, 'text':text})
+				w.append({'class':'forecast-div','filename': weather.image_id, 'text':text})
 
 	
 	#retrieve user data from database
@@ -106,23 +106,28 @@ def register():
 		if (wd >= two_min) & (wd <= two_plus):
 			if (wd == now):
 				session['bigImgUrl'] = img_weather[weather.image_id]
-				w.append({'class':'today', 'filename': weather.image_id, 'text':text})
+				w.append({'class':'today-forecast-div', 'filename': weather.image_id, 'text':text})
 			else:
-				w.append({'class':'not-today','filename': weather.image_id, 'text':text})
+				w.append({'class':'forecast-div','filename': weather.image_id, 'text':text})
 
 	return render_template("loggedin.html", weathers = w)
 
 def put_city(city_name):
-	city_obj = City(city_name)
-	db.session.add(city_obj)
-	d = datetime.datetime.utcnow() - datetime.timedelta(days=2)
-	while d <= datetime.datetime.utcnow() + datetime.timedelta(days=2):
-		w = Weather(city_name, 'clear', 'sky is clear', 3.86, d,'01d')
-		db.session.add(w)
-		d = d + datetime.timedelta(days=1)
-	db.session.commit()
-		
-	#@TODO:fetchWeather
+  city_obj = City(city_name)
+  db.session.add(city_obj)
+  d = datetime.datetime.utcnow() - datetime.timedelta(days=2)
+  while d <= datetime.datetime.utcnow() + datetime.timedelta(days=2):
+    #w = Weather(city_name, 'clear', 'sky is clear', 3.86, d,'01d')
+    w2 = json.loads(get_weather(city_name, d))
+    temp = w2['list'][0]['temp']['day']
+    weat = w2['list'][0]['weather']
+    iconId = weat[0]['icon']
+    category = weat[0]['main']
+    desc = weat[0]['description']
+    w = Weather(city_name, category, desc, temp, d,iconId)
+    db.session.add(w)
+    d = d + datetime.timedelta(days=1)
+  db.session.commit()
 
 @app.route('/logout')
 def logout():
@@ -139,7 +144,7 @@ def send_mms():
            from_="+15104471209",
            media_url="http://i.qkme.me/3tf0y8.jpg")
 
-
-
-
-
+def get_weather(city, date):
+  uri = ("http://api.openweathermap.org/data/2.5/forecast/daily?q=%s&mode=json&units=metric&type=hour&start=%s&cnt=1&APPID=bd6a2021af827442a3011948d0101ef7" % (city, date))
+  return urllib2.urlopen(uri).read()
+  
