@@ -393,7 +393,7 @@ form input {
 }
 
 #loggedin-container {
-  width:80%;
+  width:85%;
   margin:auto;
 }
 
@@ -407,43 +407,53 @@ form input {
 }
 
 #forecast {
-  width:80%;
+  margin-top:50px;
+  width:68%;
+  display:block;
   float:right;
 }
 
 #forecast h3 {
-  clear:right;
+  clear:both;
+  padding-top:30px;
   text-align:center;
 }
 
-#forecast ul {
-  list-style-type:none;
 
-}
-
-#forecast ul li{
+#forecast div {
   margin:15px;
   border: 2px solid white;
   width:110px;
   height:110px;
   display:block;
-  float:right;
-  background-color:#219ab3;
+  float:left;
 }
 
-#forecast li.today {
-  margin-top:-25px;
+#forecast div.today {
+  margin-top:-24px;
   width:150px;
   height:150px;
   border: 4px solid white;
 }
-
-#forecast li.today img{
+#forecast div.today img{
   width:100%;
+  float:left;
 }
-
-#forecast li img{
+#forecast div.image1 img{
   width:100%;
+  float:left;
+}
+#forecast div.image2 img{
+  width:100%;
+  float:left;
+}
+#forecast div.image4 img{
+  width:100%;
+  float:left;
+}
+#forecast div.image5 img{
+  width:100%;
+  float:left;
 }
 
 #welcome h2{
