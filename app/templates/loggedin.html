@@ -61,8 +61,8 @@
     <!-- About Section -->
     <section id="loggedin">
         <div id="loggedin-container">
-          <div id="welcome"><h2 class=>Welcome <span class="special">{USER}</span></h2></div>
-          <div id="city"><h2 class="special">{CITY NAME}</h2><h2><img src="../static/img/clouds.png" /></h2></div>
+          <div id="welcome"><h2 class=>Welcome <span class="special">{{session['username']}}</span></h2></div>
+          <div id="city"><h2 class="special">{{session['city']}}</h2><h2><img src="../static/img/clouds.png" /></h2></div>
           <div id="forecast">
             <ul>
               <li><img src="../static/img/smiley.jpg" /></li>

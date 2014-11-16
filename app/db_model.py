@@ -1,4 +1,4 @@
-#!../bin/python
+#!../../bin/python
 from flask import Flask
 from flask.ext.sqlalchemy import SQLAlchemy
 import os
@@ -14,7 +14,7 @@ db = SQLAlchemy(app)
 
 class User(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    username = db.Column(db.String(80), index=True, unique=True)
+    username = db.Column(db.String(80))
     password = db.Column(db.String(15))
     sex = db.Column(db.String(1))
     phone_num = db.Column(db.String(12))
@@ -76,9 +76,5 @@ class Image(db.Model):
 
     def __repr__(self):
 	    return '<Image %r>' % (self.id)
-
-
-db.create_all()
-
 
 
