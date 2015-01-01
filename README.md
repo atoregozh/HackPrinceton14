@@ -13,6 +13,7 @@ pip install -r requirements.txt
 ```python
 python run.py  
 ```
+* View the app by opening your browser and navigating to **http://localhost:5000**
 * Have fun!
 
 ##### Still TODO
